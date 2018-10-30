@@ -1,16 +1,29 @@
 import style from "./style";
-
 const items = [{ pass: true }, { pass: true }];
 
-const checks = () => {
-  return items.map(item => {
-    const status = item.pass ? style.passing : style.failing;
-    return <div class={[style.test, status].join(" ")}>{item}</div>;
+const checkPassed = data => {
+  if (data && data.verifications && data.verifications.passed) {
+    return data.verifications.passed;
+  }
+
+  return false;
+};
+
+const checkStatus = data => {
+  if (!data || !data.ITSG33a) {
+    return;
+  }
+
+  const d = data.ITSG33a;
+
+  return Object.keys(d).map(key => {
+    const status = checkPassed(d[key]) ? style.passing : style.failing;
+    return <div class={[style.test, status].join(" ")} />;
   });
 };
 
-const Grid = () => {
-  return <div class={style.grid}>{checks()}</div>;
+const Grid = ({ data }) => {
+  return <div class={style.grid}>{checkStatus(data)}</div>;
 };
 
 export default Grid;
