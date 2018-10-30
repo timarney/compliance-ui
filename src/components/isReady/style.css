@@ -1,0 +1,11 @@
+.isReady {
+  display: flex;
+  justify-content: center;
+}
+
+.isReadyText {
+  font-size: 6em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin:.5em 1em;
+}

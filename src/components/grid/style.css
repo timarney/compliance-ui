@@ -1,0 +1,23 @@
+.grid {
+  display: flex;
+}
+
+.test {
+  border: 1px solid #fff;
+  color: transparent;
+  cursor: default;
+  display: block;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 30px;
+}
+
+.passing {
+  background-color: #01FF70;
+}
+
+.failing {
+  background-color: #FF4136;
+}
