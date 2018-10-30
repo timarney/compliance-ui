@@ -6,6 +6,7 @@ import { controls } from "./controls";
 query{
  ITSG33a{
   AC_2{
+    name
     verifications{
       passed
     }
@@ -16,7 +17,7 @@ query{
 let query = "{ITSG33a{";
 
 const controlsObj = Object.keys(controls).map(item => {
-  query += ` ${item}{verifications{passed}}`;
+  query += ` ${item}{name verifications{passed}}`;
 });
 
 query += "}}";

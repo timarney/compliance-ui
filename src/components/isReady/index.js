@@ -1,4 +1,5 @@
 import style from "./style";
+import { checkStatus } from "../../util/";
 
 const Yes = () => {
   return (
@@ -22,8 +23,8 @@ const No = () => {
   );
 };
 
-const IsReady = () => {
-  return <Yes />;
+const IsReady = ({ data }) => {
+  return checkStatus(data).allPassed ? <Yes /> : <No />;
 };
 
 export default IsReady;

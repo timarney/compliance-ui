@@ -14,8 +14,14 @@ class DataProvider extends Component {
 
 const Home = () => (
   <div class={style.home}>
-    <IsReady />
-    <DataProvider>{data => <Grid data={data} />}</DataProvider>
+    <DataProvider>
+      {data => (
+        <div>
+          <IsReady data={data} />
+          <Grid data={data} />
+        </div>
+      )}
+    </DataProvider>
   </div>
 );
 
