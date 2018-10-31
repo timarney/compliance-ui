@@ -26,7 +26,7 @@ const buildQuery = () => {
 };
 
 const getData = () => {
-  const endpoint = "http://localhost:3000";
+  const endpoint = process.env.PREACT_APP_API_URL;
   return request(endpoint, buildQuery()).then(data => data);
 };
 
