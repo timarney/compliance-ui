@@ -2,7 +2,9 @@ FROM node:alpine
 WORKDIR /usr/src/site/
 COPY package*.json ./
 RUN npm install
-RUN npm build
+COPY . .
+RUN npm run-script build
+
 
 COPY ./build ./build
 COPY ./server.js ./server.js
