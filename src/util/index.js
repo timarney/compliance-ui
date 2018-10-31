@@ -39,7 +39,6 @@ export const checkStatus = (
 
     return (
       <Tooltip
-        // options
         title={title}
         position="top"
         trigger="mouseenter"

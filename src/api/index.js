@@ -14,17 +14,20 @@ query{
 }
 }
 */
-let query = "{ITSG33a{";
+const buildQuery = () => {
+  let query = "{ITSG33a{";
 
-const controlsObj = Object.keys(controls).map(item => {
-  query += ` ${item}{name verifications{passed}}`;
-});
+  const controlsObj = Object.keys(controls).map(item => {
+    query += ` ${item}{name verifications{passed}}`;
+  });
 
-query += "}}";
+  query += "}}";
+  return query;
+};
 
-const getData = async () => {
+const getData = () => {
   const endpoint = "http://localhost:3000";
-  return await request(endpoint, query).then(data => data);
+  return request(endpoint, buildQuery()).then(data => data);
 };
 
 export default getData;

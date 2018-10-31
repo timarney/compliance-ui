@@ -5,7 +5,8 @@ import IsReady from "../../components/isReady";
 import getData from "../../api";
 class DataProvider extends Component {
   async componentDidMount() {
-    this.setState({ data: await getData() });
+    const data = await getData();
+    this.setState({ data });
   }
   render(props, state) {
     return props.children[0](state.data);
