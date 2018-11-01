@@ -1,6 +1,6 @@
 const checkPassed = data => {
-  if (data && data.verifications && data.verifications.passed) {
-    return data.verifications.passed;
+  if (data && data.verifications && data.verifications.length) {
+    return data.verifications[data.verifications.length - 1].passed;
   }
 
   return false;
@@ -34,7 +34,7 @@ export const checkStatus = (
 
     const title = `${keyName} ${name}`;
 
-    return <div class={[style.test, status].join(" ")} />;
+    return <div key={keyName} className={[style.test, status].join(" ")} />;
   });
 
   return { allPassed, elements };

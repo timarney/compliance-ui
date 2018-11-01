@@ -28,7 +28,31 @@ export default class MyDocument extends Document {
         <Head>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
-        <body className="custom_class">
+        <style jsx global>{`
+          html,
+          body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: #fafafa;
+            font-family: "Helvetica Neue", arial, sans-serif;
+            font-weight: 400;
+            color: #444;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          #app {
+            height: 100%;
+          }
+        `}</style>
+
+        <body className="body">
           <Main />
           <NextScript />
         </body>

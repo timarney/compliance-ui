@@ -27,12 +27,12 @@ const buildQuery = () => {
 };
 
 const getData = async () => {
-  const endpoint = "http://localhost:3000";
-  console.log(endpoint)
+  const endpoint = process.env.API_URL;
+  return graphData;
   const data = await request(endpoint, buildQuery())
     .then(data => data)
-    .catch(() => {
-      return graphData;
+    .catch(err => {
+      console.log(err.message);
     });
 
   return data;

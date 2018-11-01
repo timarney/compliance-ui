@@ -27,7 +27,11 @@ const failing = css`
 `;
 
 const Grid = ({ data }) => {
-  return <div className={grid}>{checkStatus(data).elements}</div>;
+  return (
+    <div className={grid}>
+      {checkStatus(data, { test, passing, failing }).elements}
+    </div>
+  );
 };
 
 export default Grid;
