@@ -6,21 +6,20 @@ const checkPassed = data => {
   return false;
 };
 
-// @todo refactor this to just return array with data not markup
-export const checkStatus = (
-  data,
-  style = { test: "", passing: "", failing: "" }
-) => {
+export const checkStatus = data => {
   if (!data || !data.ITSG33a) {
-    return { allPassed: false, elements: null };
+    return {
+      allPassed: false,
+      items: []
+    };
   }
 
-  const d = data.ITSG33a;
+  let items;
   let allPassed = true;
+  const d = data.ITSG33a;
 
-  let elements = Object.keys(d).map(key => {
-    
-    const status = checkPassed(d[key]) ? style.passing : style.failing;
+  items = Object.keys(d).map(key => {
+    const status = checkPassed(d[key]) ? true : false;
 
     if (!status) {
       allPassed = false;
@@ -32,11 +31,10 @@ export const checkStatus = (
     }
 
     const keyName = key.replace(/_/g, " ");
-
     const title = `${keyName} ${name}`;
 
-    return <div key={keyName} className={[style.test, status].join(" ")} />;
+    return { key, title, status };
   });
 
-  return { allPassed, elements };
+  return { allPassed, items };
 };

@@ -29,9 +29,12 @@ const buildQuery = () => {
 const getData = async () => {
   const endpoint = process.env.API_URL;
   const data = await request(endpoint, buildQuery())
-    .then(data => data)
+    .then(data => {
+      return data;
+    })
     .catch(err => {
-      console.log(err.message);
+      console.error("getData", err.message);
+      return {};
     });
 
   return data;

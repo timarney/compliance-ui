@@ -1,5 +1,6 @@
 import { checkStatus } from "../../util/";
 import { css } from "emotion";
+import Failed from "../Failed";
 
 const grid = css`
   display: flex;
@@ -26,10 +27,23 @@ const failing = css`
   background-color: #ff4136;
 `;
 
+const renderBox = ({ key, status, title }) => {
+  const style = status ? passing : failing;
+  return <div key={key} title={title} className={[test, style].join(" ")} />;
+};
+
 const Grid = ({ data }) => {
+  const status = checkStatus(data);
+
+  if (!status.items.length) {
+    return null;
+  }
+
   return (
     <div className={grid}>
-      {checkStatus(data, { test, passing, failing }).elements}
+      {status.items.map(item => {
+        return renderBox(item);
+      })}
     </div>
   );
 };
