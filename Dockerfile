@@ -1,5 +1,5 @@
 FROM node:alpine
 COPY . .
-RUN npm install
+RUN yarn install && yarn build
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["yarn", "start"]

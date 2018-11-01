@@ -19,11 +19,12 @@ export const checkStatus = (
   let allPassed = true;
 
   let elements = Object.keys(d).map(key => {
+    
+    const status = checkPassed(d[key]) ? style.passing : style.failing;
+
     if (!status) {
       allPassed = false;
     }
-
-    const status = checkPassed(d[key]) ? style.passing : style.failing;
 
     let name = "";
     if (d[key] && d[key].name) {

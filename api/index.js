@@ -28,7 +28,6 @@ const buildQuery = () => {
 
 const getData = async () => {
   const endpoint = process.env.API_URL;
-  return graphData;
   const data = await request(endpoint, buildQuery())
     .then(data => data)
     .catch(err => {
