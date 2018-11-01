@@ -1,6 +1,3 @@
-import "react-tippy/dist/tippy.css";
-import { Tooltip } from "react-tippy";
-
 const checkPassed = data => {
   if (data && data.verifications && data.verifications.passed) {
     return data.verifications.passed;
@@ -37,15 +34,7 @@ export const checkStatus = (
 
     const title = `${keyName} ${name}`;
 
-    return (
-      <Tooltip
-        title={title}
-        position="top"
-        trigger="mouseenter"
-      >
-        <div class={[style.test, status].join(" ")} />
-      </Tooltip>
-    );
+    return <div class={[style.test, status].join(" ")} />;
   });
 
   return { allPassed, elements };

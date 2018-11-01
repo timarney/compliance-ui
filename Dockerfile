@@ -1,6 +1,5 @@
 FROM node:alpine
 COPY . .
 RUN npm install
-RUN npm run-script build
-EXPOSE 8080
+EXPOSE 3000
 CMD ["node", "server.js"]

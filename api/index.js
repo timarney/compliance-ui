@@ -1,5 +1,6 @@
 import { request } from "graphql-request";
 import { controls } from "./controls";
+import { graphData } from "./sample";
 
 /* build up the query string  */
 /*
@@ -25,9 +26,16 @@ const buildQuery = () => {
   return query;
 };
 
-const getData = () => {
-  const endpoint = process.env.PREACT_APP_API_URL;
-  return request(endpoint, buildQuery()).then(data => data);
+const getData = async () => {
+  const endpoint = "http://localhost:3000";
+  console.log(endpoint)
+  const data = await request(endpoint, buildQuery())
+    .then(data => data)
+    .catch(() => {
+      return graphData;
+    });
+
+  return data;
 };
 
 export default getData;

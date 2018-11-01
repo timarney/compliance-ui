@@ -1,7 +1,7 @@
-import style from './style';
+
 
 const Header = () => (
-	<header class={style.header}>
+	<header className={{}}>
 		<h1>Are we compliant yet?</h1>
 	</header>
 );
