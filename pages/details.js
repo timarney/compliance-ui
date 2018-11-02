@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
+import {withRouter} from 'next/router'
 
 const home = css`
   padding: 56px 20px;
@@ -16,7 +17,7 @@ if (typeof window !== "undefined") {
 const PageHead = () => (
   <div>
     <Head>
-      <title>CDS</title>
+      <title>CDS - Details</title>
       <meta
         name="viewport"
         content="initial-scale=1.0, width=device-width"
@@ -26,12 +27,15 @@ const PageHead = () => (
   </div>
 );
 
-const DetailsPage = ({}) => {
-  return <div>Details</div>;
-};
+const DetailsPage = withRouter(props => (
+  <div>
+    <h1>{props.router.query.control}</h1>
+    <div>Details</div>
+  </div>
+));
 
-Details.getInitialProps = async ({ req }) => {
+DetailsPage.getInitialProps = async ({ req }) => {
   return {};
 };
 
-export default Details;
+export default DetailsPage;

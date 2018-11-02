@@ -1,5 +1,6 @@
 import { checkStatus } from "../util";
 import { css } from "emotion";
+import Link from "next/link";
 
 const grid = css`
   display: flex;
@@ -28,7 +29,11 @@ const failing = css`
 
 const renderBox = ({ key, status, title }) => {
   const style = status ? passing : failing;
-  return <div key={key} title={title} className={[test, style].join(" ")} />;
+  return (
+    <Link key={key} title={title} href={`/details?control=${key}`}>
+      <div className={[test, style].join(" ")}>A</div>
+    </Link>
+  );
 };
 
 const Grid = ({ data }) => {
