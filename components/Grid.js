@@ -1,6 +1,5 @@
-import { checkStatus } from "../../util/";
+import { checkStatus } from "../util";
 import { css } from "emotion";
-import Failed from "../Failed";
 
 const grid = css`
   display: flex;

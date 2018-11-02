@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
-import { Header, Home } from "../components";
 
 const home = css`
   padding: 56px 20px;
@@ -27,20 +26,12 @@ const PageHead = () => (
   </div>
 );
 
-const IndexPage = ({}) => {
-  return (
-    <div>
-      <PageHead />
-      <Header />
-      <div className={home}>
-        <Home />
-      </div>
-    </div>
-  );
+const DetailsPage = ({}) => {
+  return <div>Details</div>;
 };
 
-IndexPage.getInitialProps = async ({ req }) => {
+Details.getInitialProps = async ({ req }) => {
   return {};
 };
 
-export default IndexPage;
+export default Details;

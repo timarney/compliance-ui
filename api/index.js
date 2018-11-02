@@ -33,8 +33,8 @@ const getData = async () => {
       return data;
     })
     .catch(err => {
-      console.error("getData", err.message);
-      return {};
+      console.error(err.message);
+      return err;
     });
 
   return data;

@@ -1,7 +1,7 @@
 import { css } from "emotion";
-import { checkStatus } from "../../util/";
+import { checkStatus } from "../util";
 
-const isReady = css`
+const container = css`
   display: flex;
   justify-content: center;
 `;
@@ -15,7 +15,7 @@ const isReadyText = css`
 
 const Yes = () => {
   return (
-    <div className={isReady}>
+    <div className={container}>
       <h2 className={isReadyText}>Yes 🎉</h2>
     </div>
   );
@@ -23,7 +23,7 @@ const Yes = () => {
 
 const No = () => {
   return (
-    <div className={isReady}>
+    <div className={container}>
       <h2 className={isReadyText}>No 💩</h2>
     </div>
   );

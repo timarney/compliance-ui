@@ -2,7 +2,6 @@ import React from "react";
 import App, { Container } from "next/app";
 import ThemeProvider from "../store/index";
 import store from "store";
-
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};

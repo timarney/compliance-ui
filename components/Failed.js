@@ -5,6 +5,7 @@ const Failed = () => {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top:1em;
   `;
 
   return <div className={center}>⚠️ Failed to fetch GraphQL API data</div>;
