@@ -1,9 +1,8 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
-import { controlStatus } from "../api/index";
-import { withRouter } from "next/router";
+import { Header, Details } from "../components";
 
-const home = css`
+const details = css`
   padding: 56px 20px;
   min-height: 100%;
   width: 100%;
@@ -28,52 +27,18 @@ const PageHead = () => (
   </div>
 );
 
-const outputVerifications = data => {
-  return data.verifications.map(() => {
-    return "hey";
-  });
-};
-
-const Details = withRouter(({ router, data }) => {
-  const control = router.query.control;
-  console.log("control", control);
-  let status = null;
-  if (data && data.ITSG33a && data.ITSG33a[control]) {
-    status = outputVerifications(data.ITSG33a[control]);
-  }
-  return (
-    <div>
-      <h1>{control}</h1>
-      <div>Details </div>
-      {status}
-    </div>
-  );
-});
-
 class DetailsPage extends React.Component {
-  state = { err: false, data: {} };
-  async componentDidMount() {
-    const result = await controlStatus("SA_11_1");
-    console.log("result", result);
-
-    if (result instanceof Error) {
-      this.setState({ err: result.message });
-      return;
-    }
-
-    this.setState({ data: result });
-  }
   render() {
-    const { err, data } = this.state;
-
-    if (err) {
-      return <Failed />;
-    }
-
-    return <Details data={data} />;
+    return (
+      <div>
+        <PageHead />
+        <Header />
+        <div className={details}>
+          <Details />
+        </div>
+      </div>
+    );
   }
 }
-
-const result = controlStatus("SA_11_1");
 
 export default DetailsPage;

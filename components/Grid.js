@@ -27,21 +27,22 @@ const failing = css`
   background-color: #ff4136;
 `;
 
-const renderBox = ({ key, status, title }) => {
+const renderBox = ({ key, status, title = "" }, link) => {
   const style = status ? passing : failing;
-  return (
-    <Link
-      key={key}
-      title={title}
-      as={`/controls/${key}`}
-      href={`/details?control=${key}`}
-    >
-      <div className={[test, style].join(" ")}>A</div>
-    </Link>
-  );
+  const box = <div key={key} className={[test, style].join(" ")} />;
+
+  if (link) {
+    return (
+      <Link key={key} as={`/controls/${key}`} href={`/details?control=${key}`}>
+        {box}
+      </Link>
+    );
+  }
+
+  return box;
 };
 
-const Grid = ({ data }) => {
+const Grid = ({ data, link = false }) => {
   const status = checkStatus(data);
 
   if (!status.items.length) {
@@ -51,7 +52,7 @@ const Grid = ({ data }) => {
   return (
     <div className={grid}>
       {status.items.map(item => {
-        return renderBox(item);
+        return renderBox(item, link);
       })}
     </div>
   );

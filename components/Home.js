@@ -1,5 +1,5 @@
-import { allControlsStatus, controlStatus } from "../api/index";
-import { Grid, IsReady, Failed } from ".";
+import { allControlsStatus } from "../api/index";
+import { Grid, IsReady, Failed } from "./";
 export default class Home extends React.Component {
   state = { err: false, data: {} };
   async componentDidMount() {
@@ -22,7 +22,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <IsReady data={data} />
-        <Grid data={data} />
+        <Grid data={data} link={true} />
       </div>
     );
   }

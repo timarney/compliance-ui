@@ -3,3 +3,4 @@ export { default as Failed } from "./Failed";
 export { default as Grid } from "./Grid";
 export { default as IsReady } from "./IsReady";
 export { default as Home } from "./Home";
+export { default as Details } from "./Details";
