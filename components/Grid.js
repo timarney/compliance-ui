@@ -30,13 +30,23 @@ const failing = css`
 const renderBox = ({ key, status, title = "" }, link) => {
   const style = status ? passing : failing;
   const box = <div key={key} className={[test, style].join(" ")} />;
+  const url = `/controls/${key}`;
 
   if (link) {
-    return (
-      <Link key={key} as={`/controls/${key}`} href={`/details?control=${key}`}>
-        {box}
-      </Link>
-    );
+    if (typeof window != "undefined") {
+      return (
+        <Link key={key} as={url} href={`/details?control=${key}`}>
+          {box}
+        </Link>
+      );
+    } else {
+      //ssr no js
+      return (
+        <a key={key} href={url}>
+          {box}
+        </a>
+      );
+    }
   }
 
   return box;

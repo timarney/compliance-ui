@@ -1,33 +1,28 @@
 import { withRouter } from "next/router";
+import { Grid, Failed } from "./";
+import { useState, useEffect } from "react";
 import { controlStatus } from "../api";
-import { Grid, IsReady, Failed } from "./";
 
-class Details extends React.Component {
-  state = { err: false, data: {} };
+export const Details = ({ data, err, router }) => {
+  const control = router.query.control;
+  const [controlData, setControlData] = useState({});
 
-  async componentDidMount() {
-    const control = this.props.router.query.control;
-    const result = await controlStatus(control);
+  useEffect(async () => {
+    if (data) return;
+    const result = (data = await controlStatus(control));
+    setControlData(result);
+  }, controlData);
 
-    if (result instanceof Error) {
-      this.setState({ err: result.message });
-      return;
-    }
-
-    this.setState({ data: result });
+  if (err) {
+    return <Failed />;
   }
 
-  render() {
-    const control = this.props.router.query.control;
-    const { data } = this.state;
-
-    return (
-      <div>
-        <h1>{control}</h1>
-        <Grid data={data} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>{control}</h1>
+      <Grid data={data ? data : controlData} />
+    </div>
+  );
+};
 
 export default withRouter(Details);

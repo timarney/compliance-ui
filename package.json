@@ -1,7 +1,7 @@
 {
-  "private": true,
+  "private": false,
   "name": "compliance-ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "node server.js",
@@ -11,25 +11,20 @@
     "stats": "BUNDLE_CHECK=true next build"
   },
   "dependencies": {
-    "add": "^2.0.6",
     "babel-plugin-emotion": "^9.2.11",
     "body-parser": "^1.18.3",
-    "cowsay-browser": "^1.1.8",
-    "css-loader": "^1.0.1",
+    "dotenv": "^6.1.0",
     "dotenv-webpack": "^1.5.7",
     "emotion": "^9.2.12",
     "emotion-server": "^9.2.12",
     "graphql-request": "^1.8.2",
-    "isomorphic-fetch": "^2.2.1",
-    "next": "^7.0.1",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "next": "^7.0.2",
+    "react": "16.7.0-alpha.0 - next",
+    "react-dom": "16.7.0-alpha.0 - next",
     "react-emotion": "^9.2.12",
-    "store": "^2.0.12",
-    "style-loader": "^0.23.1",
-    "yarn": "^1.10.1"
+    "yarn": "^1.12.1"
   },
   "devDependencies": {
-    "webpack-bundle-analyzer": "^3.0.2"
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

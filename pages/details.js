@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
 import { Header, Details } from "../components";
+import { controlStatus } from "../api";
 
 const details = css`
   padding: 56px 20px;
@@ -27,18 +28,32 @@ const PageHead = () => (
   </div>
 );
 
-class DetailsPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <PageHead />
-        <Header />
-        <div className={details}>
-          <Details />
-        </div>
+const DetailsPage = ({ err, data }) => {
+  return (
+    <div>
+      <PageHead />
+      <Header />
+      <div className={details}>
+        <Details data={data} err={err} />
       </div>
-    );
+    </div>
+  );
+};
+
+DetailsPage.getInitialProps = async ({ req }) => {
+  if (!req || !req.params || !req.params.control) {
+    return;
   }
-}
+
+  const control = req.params.control;
+  const result = await controlStatus(control);
+  const props = { data: result, err: false };
+
+  if (result instanceof Error) {
+    props.err = result.message;
+  }
+
+  return props;
+};
 
 export default DetailsPage;

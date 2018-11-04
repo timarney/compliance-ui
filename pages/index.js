@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
 import { Header, Home } from "../components";
+import { allControlsStatus } from "../api/index";
 
 const home = css`
   padding: 56px 20px;
@@ -27,20 +28,27 @@ const PageHead = () => (
   </div>
 );
 
-const IndexPage = ({}) => {
+const IndexPage = ({ err, data }) => {
   return (
     <div>
       <PageHead />
       <Header />
       <div className={home}>
-        <Home />
+        <Home err={err} data={data} />
       </div>
     </div>
   );
 };
 
 IndexPage.getInitialProps = async ({ req }) => {
-  return {};
+  const result = await allControlsStatus();
+  const props = { data: result, err: false };
+
+  if (result instanceof Error) {
+    props.err = result.message;
+  }
+
+  return props;
 };
 
 export default IndexPage;
