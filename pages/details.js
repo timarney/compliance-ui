@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { hydrate, css } from "react-emotion";
-import {withRouter} from 'next/router'
+import { withRouter } from "next/router";
 
 const home = css`
   padding: 56px 20px;

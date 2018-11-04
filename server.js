@@ -15,8 +15,10 @@ app.prepare().then(() => {
     return app.render(req, res, "/", req.query);
   });
 
-  server.get("/about", (req, res) => {
-    return app.render(req, res, "/about", req.query);
+  server.get("/controls/:control", (req, res) => {
+    const actualPage = "/details";
+    const queryParams = { control: req.params.control };
+    app.render(req, res, actualPage, queryParams);
   });
 
   server.get("*", (req, res) => {

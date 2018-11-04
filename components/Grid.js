@@ -30,7 +30,12 @@ const failing = css`
 const renderBox = ({ key, status, title }) => {
   const style = status ? passing : failing;
   return (
-    <Link key={key} title={title} href={`/details?control=${key}`}>
+    <Link
+      key={key}
+      title={title}
+      as={`/controls/${key}`}
+      href={`/details?control=${key}`}
+    >
       <div className={[test, style].join(" ")}>A</div>
     </Link>
   );
