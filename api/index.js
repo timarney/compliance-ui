@@ -2,6 +2,8 @@ import { request } from "graphql-request";
 import { controls } from "./controls";
 import { graphData } from "./sample";
 
+const endpoint = process.env.API_URL;
+
 /* build up the query string  */
 /*
 query{
@@ -15,7 +17,8 @@ query{
 }
 }
 */
-const buildQuery = () => {
+
+export const allControlsStatus = async () => {
   let query = "{ITSG33a{";
 
   const controlsObj = Object.keys(controls).map(item => {
@@ -23,12 +26,8 @@ const buildQuery = () => {
   });
 
   query += "}}";
-  return query;
-};
 
-const getData = async () => {
-  const endpoint = process.env.API_URL;
-  const data = await request(endpoint, buildQuery())
+  const data = await request(endpoint, query)
     .then(data => {
       return data;
     })
@@ -40,4 +39,26 @@ const getData = async () => {
   return data;
 };
 
-export default getData;
+export const controlStatus = async control => {
+  const query = `query{
+    ITSG33a{
+      ${control}{
+       name
+       verifications{
+         passed
+       }
+      }
+    }
+   }`;
+
+  const data = await request(endpoint, query)
+    .then(data => {
+      return data;
+    })
+    .catch(err => {
+      console.error(err.message);
+      return err;
+    });
+
+  return data;
+};

@@ -1,10 +1,9 @@
-import getData from "../api/index";
+import { allControlsStatus, controlStatus } from "../api/index";
 import { Grid, IsReady, Failed } from ".";
-
 export default class Home extends React.Component {
   state = { err: false, data: {} };
   async componentDidMount() {
-    const result = await getData();
+    const result = await allControlsStatus();
 
     if (result instanceof Error) {
       this.setState({ err: result.message });
