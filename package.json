@@ -9,7 +9,8 @@
     "start": "next start",
     "export": "next export",
     "stats": "BUNDLE_CHECK=true next build",
-    "test": "jest"
+    "test": "jest",
+    "docker": "docker build -t cdssnc/compliance-ui . && docker push cdssnc/compliance-ui"
   },
   "dependencies": {
     "babel-plugin-emotion": "^9.2.11",
