@@ -7,7 +7,6 @@ const handle = app.getRequestHandler();
 const bodyParser = require("body-parser");
 
 app.prepare().then(() => {
-  app.setAssetPrefix(process.env.PUBLIC_PATH);
   const server = express();
   server.use(bodyParser.urlencoded({ extended: false }));
 

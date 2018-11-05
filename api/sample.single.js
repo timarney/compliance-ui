@@ -23,7 +23,16 @@ export const singleControlData = {
             "The Kubernetes API Server Pod logs all API requests that make infrastructure changes.",
           component: "Infrastructure",
           references: "kube-apiserver"
-        }
+        },
+        {
+          origin: "cdssnc/pod-check-compliance:latest",
+          timestamp: "2018-10-31T13:58:01Z",
+          passed: "true",
+          description:
+            "The Kubernetes API Server Pod logs all API requests that make infrastructure changes.",
+          component: "Infrastructure",
+          references: "kube-apiserver"
+        },
       ]
     }
   }

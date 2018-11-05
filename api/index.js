@@ -1,5 +1,6 @@
 import { request } from "graphql-request";
 import { controls } from "./controls";
+import { singleControlData } from "../api/sample.single";
 
 const endpoint = process.env.API_URL;
 
@@ -18,6 +19,8 @@ query{
 */
 
 export const allControlsStatus = async () => {
+  //return multiControlData;
+
   let query = "{ITSG33a{";
 
   Object.keys(controls).map(item => {
@@ -39,6 +42,8 @@ export const allControlsStatus = async () => {
 };
 
 export const controlStatus = async control => {
+  return singleControlData
+  
   const query = `query{
     ITSG33a{
       ${control}{
