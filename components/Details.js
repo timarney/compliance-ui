@@ -1,7 +1,14 @@
 import { withRouter } from "next/router";
-import { Grid, Failed } from "./";
+import { Grid, Failed, BackIcon } from "./";
 import { useState, useEffect } from "react";
 import { controlStatus } from "../api";
+import { css } from "emotion";
+
+const back = css`
+  display:inline-block;
+  margin-bottom: 1em;
+  color:#000;
+`;
 
 export const Details = ({ data, err, router }) => {
   const control = router.query.control;
@@ -20,6 +27,10 @@ export const Details = ({ data, err, router }) => {
   return (
     <div>
       <h1>{control}</h1>
+      <a href="/" className={back}>
+        <BackIcon />
+        Back
+      </a>
       <Grid data={data ? data : controlData} />
     </div>
   );

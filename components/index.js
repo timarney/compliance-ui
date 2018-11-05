@@ -4,3 +4,4 @@ export { default as Grid } from "./Grid";
 export { default as IsReady } from "./IsReady";
 export { Home } from "./Home";
 export { default as Details } from "./Details";
+export { BackIcon } from "./icons/BackIcon";
