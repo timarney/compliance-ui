@@ -1,4 +1,4 @@
-export const graphData = {
+export const singleControlData = {
   ITSG33a: {
     AU_2: {
       name: "Auditable Events",

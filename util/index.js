@@ -18,10 +18,12 @@ export const checkStatus = data => {
   let passed = 0;
   let elements = [];
   const d = data.ITSG33a;
-  const total = Object.keys(d).length;
+  const keys = Object.keys(d);
+  const total = keys.length;
 
-  Object.keys(d).map(key => {
+  keys.map(key => {
     let name = "";
+
     if (d[key] && d[key].name) {
       name = " - " + d[key].name;
     }
@@ -29,17 +31,18 @@ export const checkStatus = data => {
     const keyName = key.replace(/_/g, " ");
     const title = `${keyName} ${name}`;
     const els = checkPassed(d[key], key, title);
+    const latest = els[els.length - 1];
 
     if (total >= 2) {
-      // show the latest verification => home page
-      const latest = els[els.length - 1];
-      if (latest.status) {
-        passed++;
-      }
+      // push only the latest verification => home page
       elements.push(latest);
     } else {
       // => details page
       elements = els;
+    }
+
+    if (latest.status == "true") {
+      passed++;
     }
   });
 
