@@ -21,7 +21,7 @@ query{
 export const allControlsStatus = async () => {
   let query = "{ITSG33a{";
 
-  const controlsObj = Object.keys(controls).map(item => {
+  Object.keys(controls).map(item => {
     query += ` ${item}{name verifications{passed}}`;
   });
 
@@ -40,6 +40,8 @@ export const allControlsStatus = async () => {
 };
 
 export const controlStatus = async control => {
+  //return graphData;
+
   const query = `query{
     ITSG33a{
       ${control}{

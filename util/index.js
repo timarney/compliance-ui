@@ -1,30 +1,26 @@
-const checkPassed = data => {
+const checkPassed = (data, key, title) => {
   if (data && data.verifications && data.verifications.length) {
-    return data.verifications[data.verifications.length - 1].passed;
+    return data.verifications.map((item, index) => {
+      return { index: `${key}-${index}`, key, title, status: item.passed };
+    });
   }
 
-  return false;
+  return [{ index: key, key: `${key}`, title, status: false }];
 };
 
 export const checkStatus = data => {
   if (!data || !data.ITSG33a) {
     return {
-      allPassed: false,
       items: []
     };
   }
 
-  let items;
-  let allPassed = true;
+  let passed = 0;
+  let elements = [];
   const d = data.ITSG33a;
+  const total = Object.keys(d).length;
 
-  items = Object.keys(d).map(key => {
-    const status = checkPassed(d[key]) ? true : false;
-
-    if (!status) {
-      allPassed = false;
-    }
-
+  Object.keys(d).map(key => {
     let name = "";
     if (d[key] && d[key].name) {
       name = " - " + d[key].name;
@@ -32,9 +28,20 @@ export const checkStatus = data => {
 
     const keyName = key.replace(/_/g, " ");
     const title = `${keyName} ${name}`;
+    const els = checkPassed(d[key], key, title);
 
-    return { key, title, status };
+    if (total >= 2) {
+      // show the latest verification => home page
+      const latest = els[els.length - 1];
+      if (latest.status) {
+        passed++;
+      }
+      elements.push(latest);
+    } else {
+      // => details page
+      elements = els;
+    }
   });
 
-  return { allPassed, items };
+  return { items: elements, passed, total };
 };

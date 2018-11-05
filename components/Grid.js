@@ -27,15 +27,17 @@ const failing = css`
   background-color: #ff4136;
 `;
 
-const renderBox = ({ key, status, title = "" }, link) => {
+const renderBox = ({ index, key, status, title = "" }, link) => {
   const style = status ? passing : failing;
-  const box = <div key={key} className={[test, style].join(" ")} />;
+  const box = (
+    <div title={title} key={key} className={[test, style].join(" ")} />
+  );
   const url = `/controls/${key}`;
 
   if (link) {
     if (typeof window != "undefined") {
       return (
-        <Link key={key} as={url} href={`/details?control=${key}`}>
+        <Link key={index} as={url} href={`/details?control=${key}`}>
           {box}
         </Link>
       );
@@ -59,9 +61,11 @@ const Grid = ({ data, link = false }) => {
     return null;
   }
 
+  const items = status.items;
+
   return (
     <div className={grid}>
-      {status.items.map(item => {
+      {items.map(item => {
         return renderBox(item, link);
       })}
     </div>
