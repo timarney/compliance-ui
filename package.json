@@ -22,6 +22,7 @@
     "react": "16.7.0-alpha.0 - next",
     "react-dom": "16.7.0-alpha.0 - next",
     "react-emotion": "^9.2.12",
+    "reactip": "^1.1.0",
     "yarn": "^1.12.1"
   },
   "devDependencies": {

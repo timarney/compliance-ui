@@ -17,6 +17,7 @@ const test = css`
   position: relative;
   text-align: center;
   width: 30px;
+  cursor: pointer;
 `;
 
 const passing = css`
@@ -36,10 +37,18 @@ const renderBox = ({ index, key, status, title = "" }, link) => {
 
   if (link) {
     if (typeof window != "undefined") {
+      const Tooltip = require("reactip");
+
       return (
-        <Link key={index} as={url} href={`/details?control=${key}`}>
-          {box}
-        </Link>
+       
+          <Tooltip key={index} placement="top" event="hover" tooltip={title}>
+           <div>
+            <Link  as={url} href={`/details?control=${key}`}>
+              {box}
+            </Link>
+            </div>
+          </Tooltip>
+       
       );
     } else {
       //ssr no js
