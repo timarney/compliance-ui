@@ -8,35 +8,26 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:4000
 npm run dev
 
 # build for production with minification
 npm run build
 
 # test the production build locally
-npm run serve
+npm run sart
 
-# run tests with jest and preact-render-spy 
+# run tests
 npm run test
+
+# build docker image
+npm run docker
 ```
 
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+## .env
 
+Local endpoint for GraphQL api - https://github.com/cds-snc/compliance-api
 
-/*
-query{
- ITSG33a{
-  AC_2{
-    verifications{
-      passed
-    }
-  }
-  SA_11{
-    verifications{
-      passed
-    }
-  }
-}
-}
-*/
+```
+API_URL="http://localhost:3000"
+```
