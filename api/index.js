@@ -1,6 +1,5 @@
 import { request } from "graphql-request";
 import { controls } from "./controls";
-import { singleControlData } from "../api/sample.single";
 
 const endpoint = process.env.API_URL;
 
@@ -42,8 +41,6 @@ export const allControlsStatus = async () => {
 };
 
 export const controlStatus = async control => {
-  return singleControlData
-  
   const query = `query{
     ITSG33a{
       ${control}{
