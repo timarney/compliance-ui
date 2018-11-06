@@ -1,3 +1,4 @@
+import React from "react";
 import { css } from "emotion";
 import { checkStatus } from "../util";
 
@@ -18,13 +19,15 @@ const stats = css`
   justify-content: center;
   font-size: 1em;
   margin: 0 0 1.5em 0;
-  font-weight:bold;
+  font-weight: bold;
 `;
 
 const Yes = () => {
   return (
     <div className={container}>
-      <h2 className={isReadyText}>Yes 🎉</h2>
+      <h2 data-testid="yes" className={isReadyText}>
+        Yes 🎉
+      </h2>
     </div>
   );
 };
@@ -32,7 +35,9 @@ const Yes = () => {
 const No = () => {
   return (
     <div className={container}>
-      <h2 className={isReadyText}>No 💩</h2>
+      <h2 data-testid="no" className={isReadyText}>
+        No 💩
+      </h2>
     </div>
   );
 };

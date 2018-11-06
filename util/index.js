@@ -8,11 +8,9 @@ const checkPassed = (data, key, title) => {
   return [{ index: key, key: `${key}`, title, status: false }];
 };
 
-export const checkStatus = data => {
+export const checkStatus = (data = false) => {
   if (!data || !data.ITSG33a) {
-    return {
-      items: []
-    };
+    return { items: [], passed: 0, total: -1 };
   }
 
   let passed = 0;
